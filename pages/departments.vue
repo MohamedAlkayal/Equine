@@ -4,6 +4,7 @@ import convertDate from "../utilities/convertDate";
 import {
   DepartmentCreateModal,
   DepartmentUpdateModal,
+  DepartmentEmployeesModal,
   DeleteModal,
 } from "#components";
 
@@ -82,6 +83,16 @@ const openDelete = (row) => {
   });
 };
 
+// Department Employess
+const openEmployeesList = (row) => {
+  modal.open(DepartmentEmployeesModal, {
+    departmentData: row,
+    onSuccess() {
+      refresh();
+    },
+  });
+};
+
 // Actions
 const items = (row) => [
   [
@@ -92,8 +103,8 @@ const items = (row) => [
     },
     {
       label: "See Members",
-      icon: "i-heroicons-user-plus-16-solid",
-      click: () => openUpdate(row),
+      icon: "i-heroicons-user-group-20-solid",
+      click: () => openEmployeesList(row),
     },
   ],
   [

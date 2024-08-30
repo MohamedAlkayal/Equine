@@ -98,9 +98,6 @@
       "public": [
         "../public"
       ],
-      "public/*": [
-        "../public/*"
-      ],
       "pinia": [
         "../node_modules/pinia/dist/pinia"
       ],
@@ -151,7 +148,6 @@
   ],
   "exclude": [
     "../node_modules",
-    "../../../node_modules",
     "../node_modules/nuxt/node_modules",
     "../dist"
   ]

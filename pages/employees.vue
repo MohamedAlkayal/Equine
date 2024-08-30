@@ -4,6 +4,7 @@ import convertDate from "../utilities/convertDate";
 import {
   EmployeeCreateModal,
   EmployeeUpdateModal,
+  EmployeeDepartmentsModal,
   DeleteModal,
 } from "#components";
 
@@ -90,6 +91,16 @@ const openDelete = (row) => {
   });
 };
 
+// Employee Departments
+const openProfile = (row) => {
+  modal.open(EmployeeDepartmentsModal, {
+    profileData: row,
+    onSuccess() {
+      refresh();
+    },
+  });
+};
+
 // Actions
 const items = (row) => [
   [
@@ -99,9 +110,9 @@ const items = (row) => [
       click: () => openUpdate(row),
     },
     {
-      label: "Assign Department",
-      icon: "i-heroicons-user-plus-16-solid",
-      click: () => openUpdate(row),
+      label: "Departments",
+      icon: "i-heroicons-building-library-16-solid",
+      click: () => openProfile(row),
     },
   ],
   [
@@ -159,7 +170,6 @@ const items = (row) => [
         </UDropdown>
       </template>
     </UTable>
-
     <!-- <div
       class="flex-none flex justify-between items-center p-4 px-8 border-t border-gray-200 dark:border-gray-700"
     >

@@ -19,9 +19,13 @@ const renderedList = [
   >
     <div>
       <div
-        class="flex justify-center items-center w-full h-20 bg-primary-50 mx-auto mb-6 rounded-md"
+        class="flex justify-center items-center w-full h-20 bg-black mx-auto mb-6 rounded-md"
       >
-        <h1 class="text-4xl font-black text-primary-500 m-0">LOGO</h1>
+        <!-- <h1 class="text-4xl font-black text-primary-500 m-0">LOGO</h1> -->
+        <img
+          src="https://equinesolutions.co/assets/images/logo.png"
+          alt="logo"
+        />
       </div>
       <UVerticalNavigation
         :links="renderedList"

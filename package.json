@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "equine",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,16 +8,12 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "start": "nuxt start",
-    "deploy": "pm2 start npm --name ilearn -- start"
+    "start": "nuxt start"
   },
   "dependencies": {
     "@nuxt/ui": "^2.18.3",
-    "@pinia/nuxt": "^0.5.2",
     "@vee-validate/nuxt": "^4.13.2",
     "nuxt": "^3.12.4",
-    "pinia": "^2.2.0",
-    "v-calendar": "^3.1.2",
     "vue": "latest",
     "yup": "^1.4.0"
   }
