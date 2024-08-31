@@ -29,6 +29,10 @@ const cols = [
     label: "Created at",
   },
   {
+    key: "updatedDate",
+    label: "Updated at",
+  },
+  {
     key: "actions",
   },
 ];
