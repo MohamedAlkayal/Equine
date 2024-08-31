@@ -231,6 +231,6 @@ if (import.meta.hot) {
   })
 }
 
-import cfg0 from "/Users/mohamedalkayal/Desktop/Equine/app.config.ts"
+import cfg0 from "/Users/mohamedalkayal/Documents/GitHub/Equine/app.config.ts"
 
 export default /*@__PURE__*/ defuFn(cfg0, inlineConfig)

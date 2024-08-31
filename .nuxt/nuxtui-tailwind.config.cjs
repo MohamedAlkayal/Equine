@@ -1,6 +1,6 @@
 
       const { defaultExtractor: createDefaultExtractor } = require('tailwindcss/lib/lib/defaultExtractor.js')
-      const { customSafelistExtractor, generateSafelist } = require("/Users/mohamedalkayal/Desktop/Equine/node_modules/@nuxt/ui/dist/runtime/utils/colors")
+      const { customSafelistExtractor, generateSafelist } = require("/Users/mohamedalkayal/Documents/GitHub/Equine/node_modules/@nuxt/ui/dist/runtime/utils/colors")
 
       const defaultExtractor = createDefaultExtractor({ tailwindConfig: { separator: ':' } })
 
@@ -14,8 +14,8 @@
         ],
         content: {
           files: [
-            "/Users/mohamedalkayal/Desktop/Equine/node_modules/@nuxt/ui/dist/runtime/components/**/*.{vue,mjs,ts}",
-            "/Users/mohamedalkayal/Desktop/Equine/node_modules/@nuxt/ui/dist/runtime/ui.config/**/*.{mjs,js,ts}"
+            "/Users/mohamedalkayal/Documents/GitHub/Equine/node_modules/@nuxt/ui/dist/runtime/components/**/*.{vue,mjs,ts}",
+            "/Users/mohamedalkayal/Documents/GitHub/Equine/node_modules/@nuxt/ui/dist/runtime/ui.config/**/*.{mjs,js,ts}"
           ],
           transform: {
             vue: (content) => {
