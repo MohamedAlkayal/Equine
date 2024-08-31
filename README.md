@@ -6,6 +6,11 @@
 
 This project is a Vue 3 application built as part of a frontend developer interview assignment. The application is designed to manage employees and departments, demonstrating the ability to work with RESTful APIs, handle CRUD operations, manage complex data relationships, and implement robust error handling. Employees can be assigned to or removed from departments, and all CRUD operations are managed via the provided API. The project leverages Nuxt 3 for the application structure, @vee-validate/nuxt for form validation, and Yup for schema validation. The focus is on delivering a functional and user-friendly interface with a clean and organized codebase.
 
+## Live Preview
+
+I deployed a version of the application on Vercal for convenience [Live Preview](https://equine-delta.vercel.app/employees).
+   - note: This app is not fully customized for small screens 
+
 ## Getting Started
 
 ### Prerequisites
