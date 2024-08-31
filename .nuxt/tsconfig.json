@@ -86,9 +86,6 @@
       "vue-demi": [
         "../node_modules/nuxt/dist/app/compat/vue-demi"
       ],
-      "pinia": [
-        "../node_modules/pinia/dist/pinia"
-      ],
       "#ui": [
         "../node_modules/@nuxt/ui/dist/runtime"
       ],
@@ -158,7 +155,6 @@
     "./nuxt.d.ts",
     "../.config/nuxt.*",
     "../**/*",
-    "../node_modules/@pinia/nuxt/runtime",
     "../node_modules/@vee-validate/nuxt/runtime",
     "../node_modules/@nuxt/icon/runtime",
     "../node_modules/@nuxtjs/color-mode/runtime",
@@ -172,7 +168,6 @@
     "../dist",
     "../node_modules",
     "../node_modules/nuxt/node_modules",
-    "../node_modules/@pinia/nuxt/runtime/server",
     "../node_modules/@vee-validate/nuxt/runtime/server",
     "../node_modules/@nuxt/icon/runtime/server",
     "../node_modules/@nuxtjs/color-mode/runtime/server",

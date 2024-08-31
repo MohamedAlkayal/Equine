@@ -1,16 +1,16 @@
 <script setup>
-import convertDate from "../utilities/convertDate";
+import convertDate from "../utilities/convertDate"; // Utility function to convert dates
 
 import {
   EmployeeCreateModal,
   EmployeeUpdateModal,
   EmployeeDepartmentsModal,
   DeleteModal,
-} from "#components";
+} from "#components"; // Importing required modals from components
 
-const modal = useModal();
+const modal = useModal(); // Using a modal for creating, updating, and deleting data
 
-// Table data
+// Columns for the Employees table
 const cols = [
   {
     key: "id",
@@ -41,10 +41,12 @@ const cols = [
   },
 ];
 
-// Read
+// Reactive variables to handle query and loading state
 const query = ref("");
 const qeuryLoading = ref(false);
 let debounceTimer = null;
+
+// Function to update the query with debounce for efficiency
 const updateQuery = (q) => {
   qeuryLoading.value = true;
   if (debounceTimer) clearTimeout(debounceTimer);
@@ -54,54 +56,57 @@ const updateQuery = (q) => {
   }, 1000);
 };
 
+// Computed property to generate the API endpoint string based on the query
 const fetchString = computed(() => {
   let string = `/Employees`;
   if (query.value) string += `?query=${query.value}`;
   return string;
 });
+
+// Fetching employees data with custom API hook
 const { data: employees, status, refresh } = useAsyncApi("GET", fetchString);
 
-// Create
+// Function to open the create employee modal
 const openCreate = () => {
   modal.open(EmployeeCreateModal, {
     onSuccess() {
-      refresh();
+      refresh(); // Refresh the data after creation
     },
   });
 };
 
-// Update
+// Function to open the update employee modal
 const openUpdate = (row) => {
   modal.open(EmployeeUpdateModal, {
-    updateInitials: row,
+    updateInitials: row, // Passing the selected row data to the modal
     onSuccess() {
-      refresh();
+      refresh(); // Refresh the data after update
     },
   });
 };
 
-// Delete
+// Function to open the delete employee modal
 const openDelete = (row) => {
   modal.open(DeleteModal, {
-    endpoint: `Employees/${row.id}`,
-    record: "Employee",
+    endpoint: `Employees/${row.id}`, // API endpoint for deletion
+    record: "Employee", // Record type for deletion confirmation
     onSuccess() {
-      refresh();
+      refresh(); // Refresh the data after deletion
     },
   });
 };
 
-// Employee Departments
+// Function to open the employee's departments modal
 const openProfile = (row) => {
   modal.open(EmployeeDepartmentsModal, {
-    profileData: row,
+    profileData: row, // Passing the selected row data to the modal
     onSuccess() {
-      refresh();
+      refresh(); // Refresh the data after update
     },
   });
 };
 
-// Actions
+// Function to generate action items for each row in the table
 const items = (row) => [
   [
     {
@@ -128,10 +133,12 @@ const items = (row) => [
 <template>
   <Head>
     <title>Employees - Equine</title>
+    <!-- Dynamic page title -->
   </Head>
   <div
     class="relative flex flex-col min-h-[400px] max-h-screen h-full overflow-hidden"
   >
+    <!-- Page Controls: Search bar and create button -->
     <PageControls
       page="Employees"
       label="Employee"
@@ -140,6 +147,7 @@ const items = (row) => [
       @openCreate="openCreate"
       @queryChange="updateQuery"
     />
+    <!-- Employees Table -->
     <UTable
       class="flex-1"
       :loading="status === 'pending'"
@@ -154,12 +162,15 @@ const items = (row) => [
         thead: 'sticky top-0 z-40 bg-gray-50',
       }"
     >
+      <!-- Date of Birth column formatting -->
       <template #birthDate-data="{ row }">
         {{ convertDate(row.birthDate) }}
       </template>
+      <!-- Joining Date column formatting -->
       <template #dateOfJoining-data="{ row }">
         {{ convertDate(row.dateOfJoining) }}
       </template>
+      <!-- Actions column with dropdown for each row -->
       <template #actions-data="{ row }">
         <UDropdown :items="items(row)" :ui="{ item: { padding: 'px-3 py-3' } }">
           <UButton
@@ -170,26 +181,5 @@ const items = (row) => [
         </UDropdown>
       </template>
     </UTable>
-    <!-- <div
-      class="flex-none flex justify-between items-center p-4 px-8 border-t border-gray-200 dark:border-gray-700"
-    >
-      <PaginationMeta
-        :rowsPerPage="10"
-        :page="page"
-        :total="employees?.meta?.total"
-      />
-      <UPagination
-        size="xs"
-        v-if="employees?.meta?.total"
-        v-model="page"
-        :page-count="selectedRowsPerPage"
-        :total="employees.meta.total"
-        :to="
-          (page) => ({
-            query: { page },
-          })
-        "
-      />
-    </div> -->
   </div>
 </template>

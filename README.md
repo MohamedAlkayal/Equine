@@ -1,75 +1,33 @@
-# Nuxt 3 Minimal Starter
+# Equine Frontend Application
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Introduction
 
-## Setup
+This project is a Vue 3 application built as part of a frontend developer interview assignment. The application is designed to manage employees and departments, demonstrating the ability to work with RESTful APIs, handle CRUD operations, manage complex data relationships, and implement robust error handling. Employees can be assigned to or removed from departments, and all CRUD operations are managed via the provided API. The project leverages Nuxt 3 for the application structure, @vee-validate/nuxt for form validation, and Yup for schema validation. The focus is on delivering a functional and user-friendly interface with a clean and organized codebase.
 
-Make sure to install the dependencies:
+## Getting Started
 
-```bash
-# npm
-npm install
+### Prerequisites
 
-# pnpm
-pnpm install
+- **Node.js**: Make sure you have Node.js installed. The project has been tested with Node.js version 14.x and higher.
+- **npm**: The project uses npm as the package manager.
 
-# yarn
-yarn install
+### Installation
 
-# bun
-bun install
-```
+1. **Clone the Repository**
 
-## Development Server
+   ```bash
+   git clone https://github.com/mohamedalkayal/equine.git
+   cd equine
+   ```
 
-Start the development server on `http://localhost:3000`:
+2. **Install Dependencies**
 
-```bash
-# npm
-npm run dev
+   ```bash
+   npm install
+   ```
 
-# pnpm
-pnpm run dev
+3. **Environment Variables**
 
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+   ```bash
+   BASE_API_URL="https://interview.frontend.equinesolutions.co/api"
+   ```

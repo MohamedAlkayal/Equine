@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   colorMode: {
     preference: "light",
   },
-  modules: ["@pinia/nuxt", "@vee-validate/nuxt", "@nuxt/ui"],
+  modules: ["@vee-validate/nuxt", "@nuxt/ui"],
   veeValidate: {
     autoImports: true,
     componentNames: {

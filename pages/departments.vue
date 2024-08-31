@@ -1,16 +1,16 @@
 <script setup>
-import convertDate from "../utilities/convertDate";
+import convertDate from "../utilities/convertDate"; // Utility to format dates
 
 import {
   DepartmentCreateModal,
   DepartmentUpdateModal,
   DepartmentEmployeesModal,
   DeleteModal,
-} from "#components";
+} from "#components"; // Importing modals for CRUD operations
 
-const modal = useModal();
+const modal = useModal(); // Modal instance for handling modals
 
-// Table data
+// Table columns definition
 const cols = [
   {
     key: "id",
@@ -33,7 +33,7 @@ const cols = [
   },
 ];
 
-// Read
+// Query handling with debounce for search functionality
 const query = ref("");
 const qeuryLoading = ref(false);
 let debounceTimer = null;
@@ -46,54 +46,57 @@ const updateQuery = (q) => {
   }, 1000);
 };
 
+// Computed fetch string for API calls
 const fetchString = computed(() => {
   let string = `/Departments`;
   if (query.value) string += `?query=${query.value}`;
   return string;
 });
+
+// Fetching employees data with the useAsyncApi composable
 const { data: employees, status, refresh } = useAsyncApi("GET", fetchString);
 
-// Create
+// Open modal for creating a new department
 const openCreate = () => {
   modal.open(DepartmentCreateModal, {
     onSuccess() {
-      refresh();
+      refresh(); // Refresh the data after successful creation
     },
   });
 };
 
-// Update
+// Open modal for updating an existing department
 const openUpdate = (row) => {
   modal.open(DepartmentUpdateModal, {
-    updateInitials: row,
+    updateInitials: row, // Passing the current row data to the modal
     onSuccess() {
-      refresh();
+      refresh(); // Refresh the data after successful update
     },
   });
 };
 
-// Delete
+// Open modal for deleting a department
 const openDelete = (row) => {
   modal.open(DeleteModal, {
-    endpoint: `Departments/${row.id}`,
-    record: "Department",
+    endpoint: `Departments/${row.id}`, // API endpoint for deletion
+    record: "Department", // Record type for user feedback
     onSuccess() {
-      refresh();
+      refresh(); // Refresh the data after successful deletion
     },
   });
 };
 
-// Department Employess
+// Open modal to see employees in a department
 const openEmployeesList = (row) => {
   modal.open(DepartmentEmployeesModal, {
-    departmentData: row,
+    departmentData: row, // Passing department data to the modal
     onSuccess() {
-      refresh();
+      refresh(); // Refresh the data after successful operation
     },
   });
 };
 
-// Actions
+// Define action items for the actions column
 const items = (row) => [
   [
     {
@@ -124,6 +127,7 @@ const items = (row) => [
   <div
     class="relative flex flex-col min-h-[400px] max-h-screen h-full overflow-hidden"
   >
+    <!-- Page controls including search and create button -->
     <PageControls
       page="Departments"
       label="Department"
@@ -132,6 +136,7 @@ const items = (row) => [
       @openCreate="openCreate"
       @queryChange="updateQuery"
     />
+    <!-- Table displaying department data -->
     <UTable
       class="flex-1"
       :loading="status === 'pending'"
@@ -146,12 +151,15 @@ const items = (row) => [
         thead: 'sticky top-0 z-40 bg-gray-50',
       }"
     >
+      <!-- Formatting birthDate column using convertDate utility -->
       <template #birthDate-data="{ row }">
         {{ convertDate(row.birthDate) }}
       </template>
+      <!-- Formatting dateOfJoining column using convertDate utility -->
       <template #dateOfJoining-data="{ row }">
         {{ convertDate(row.dateOfJoining) }}
       </template>
+      <!-- Actions column with dropdown menu -->
       <template #actions-data="{ row }">
         <UDropdown :items="items(row)" :ui="{ item: { padding: 'px-3 py-3' } }">
           <UButton
