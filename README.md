@@ -23,15 +23,14 @@ I deployed a version of the application on Vercal for convenience [Live Preview]
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/equine.git
+   git clone https://github.com/MohamedAlkayal/equine.git
    cd equine
    ```
 
 2. **Install Dependencies**
 
    ```bash
-   git clone https://github.com/your-username/equine.git
-   cd equine
+   npm install
    ```
 
 3. **Environment Variables**
